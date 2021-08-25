@@ -24,6 +24,7 @@ body {
   color: #2c3e50;
   background-color: rgb(247, 247, 247);
   margin: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
