@@ -31,7 +31,7 @@ body {
 }
 
 #nav {
-  padding: 7rem;
+  padding: 4rem;
 }
 
 #nav a {

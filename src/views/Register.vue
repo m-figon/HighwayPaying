@@ -7,26 +7,76 @@
     <div class="register-logo2">
       <h2>...comfortable driving!</h2>
     </div>
-    <div class="middled">
+    <div class="middled" v-if="stage === 1">
       <div class="left-aligned">
         <h3>CREATE ACCOUNT</h3>
       </div>
-
       <div class="input-div">
         <h4>e-mail</h4>
         <input type="text" v-model="email" />
+        <p v-if="emailWarning">Please enter valid email</p>
       </div>
 
       <div class="input-div">
         <h4>password</h4>
         <input type="password" v-model="password" />
+        <p v-if="passwordWarning">
+          Password should have at least 8 signs, big letter, digit and special
+          sign
+        </p>
       </div>
       <div class="left-aligned">
         <input type="radio" v-bind:checked="terms" v-on:click="termsChanging" />
         <p>I accept terms of using</p>
       </div>
       <div class="left-aligned">
-        <button v-on:click="register()">Next</button>
+        <p id="warning" v-if="radioWarning">Required field</p>
+      </div>
+      <div class="left-aligned">
+        <p>Already got an account?</p>
+        <router-link to="/login"><p id="login-link">Sign in</p></router-link>
+      </div>
+      <div class="left-aligned">
+        <button v-on:click="next()">Next</button>
+      </div>
+    </div>
+    <div class="middled" v-else-if="stage === 2">
+      <div class="left-aligned">
+        <h3>CREATE ACCOUNT</h3>
+      </div>
+      <div class="input-div">
+        <h4>Car Brand</h4>
+        <select v-model="brand">
+          <option value="honda">Honda</option>
+          <option value="audi">Audi</option>
+          <option value="opel">Opel</option>
+          <option value="volvo">Volvo</option>
+        </select>
+        <p v-if="brandWarning">Please select car brand</p>
+      </div>
+
+      <div class="input-div">
+        <h4>Car Type</h4>
+        <select v-model="type">
+          <option value="hatchback">Hatchback</option>
+          <option value="sedan">Sedan</option>
+          <option value="suv">SUV</option>
+          <option value="truck">Truck</option>
+        </select>
+        <p v-if="typeWarning">
+          Please select car type
+        </p>
+      </div>
+      <div class="input-div">
+        <h4>Car Registration</h4>
+        <input type="text" v-model="registration" />
+        <p v-if="registrationWarning">
+          Registration should have 8 signs, no special letters sign
+        </p>
+      </div>
+
+      <div class="left-aligned">
+        <button v-on:click="finish()">Finish</button>
       </div>
     </div>
   </div>
@@ -40,6 +90,21 @@
   font-size: 1rem;
   margin-bottom: -1rem;
   margin-left: 2rem;
+}
+a:-webkit-any-link {
+  text-decoration: none;
+}
+#login-link {
+  color: orange;
+  margin-left: 0.3rem;
+}
+.input-div p,
+#warning {
+  color: red;
+  font-size: 0.6rem;
+}
+#warning {
+  margin-top: 0rem;
 }
 .register button {
   border-radius: 10px;
@@ -71,7 +136,8 @@
   margin: 0.5rem 0;
 }
 .register input[type="text"],
-.register input[type="password"] {
+.register input[type="password"],
+select {
   width: 20rem;
   height: 2rem;
   padding-left: 1rem;
@@ -126,39 +192,66 @@ h2 {
   margin: 0;
   font-weight: bold;
 }
+button:hover {
+  cursor: pointer;
+}
 </style>
 
 <script>
 // @ is an alias to /src
 
 export default {
-  data: function () {
+  data() {
     return {
       email: "",
       password: "",
       terms: false,
+      emailWarning: false,
+      passwordWarning: false,
+      radioWarning: false,
+      brand: "",
+      type: "",
+      registration: "",
+      brandWarning: false,
+      typeWarning: false,
+      registrationWarning: false,
+      stage: 1,
     };
   },
   methods: {
     termsChanging() {
       this.terms = !this.terms;
     },
-    register() {
-      if (!(
-        this.email.match(/^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$/) === null
-      )) {
-        console.log("email valid");
+    finish() {
+      this.brand !== ""
+        ? (this.brandWarning = false)
+        : (this.brandWarning = true);
+      this.type !== ""
+        ? (this.typeWarning = false)
+        : (this.typeWarning = true);
+        !(this.registration.match(/^[a-zA-Z0-9]{8}$/) === null)
+        ? (this.registrationWarning = false)
+        : (this.registrationWarning = true);
+        if(!this.brandWarning && !this.typeWarning && !this.registrationWarning){
+          alert('registered correctly')
+        }
+    },
+    next() {
+      !(this.email.match(/^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$/) === null)
+        ? (this.emailWarning = false)
+        : (this.emailWarning = true);
+
+      !(
+        this.password.match(
+          /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[.\-_@$!%*#?&])[A-Za-z\d.\-_@$!%*#?&]{8,13}$/
+        ) === null
+      )
+        ? (this.passwordWarning = false)
+        : (this.passwordWarning = true);
+      this.terms ? (this.radioWarning = false) : (this.radioWarning = true);
+      if (!this.emailWarning && !this.passwordWarning && !this.radioWarning) {
+        this.stage = 2;
       }
-      if(!(
-          this.password.match(
-            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[.\-_@$!%*#?&])[A-Za-z\d.\-_@$!%*#?&]{8,13}$/
-          ) === null
-        )){
-          console.log('password valid')
-        }
-        if(this.terms){
-          console.log('terms valid')
-        }
     },
   },
 };
