@@ -8,10 +8,10 @@
       <h2>...comfortable driving!</h2>
     </div>
     <h3>I want to join HighwayPaying</h3>
-    <router-link to="/login"><button>SIGN UP</button></router-link>
+    <router-link to="/register"><button>SIGN UP</button></router-link>
 
     <h3>I used HighwayPaying before</h3>
-    <router-link to="/register"><button>SIGN IN</button></router-link>
+    <router-link to="/login"><button>SIGN IN</button></router-link>
   </div>
 </template>
 

@@ -36,7 +36,7 @@
         <p>Already got an account?</p>
         <router-link to="/login"><p id="login-link">Sign in</p></router-link>
       </div>
-      <div class="left-aligned">
+      <div class="middle-aligned">
         <button v-on:click="next()">Next</button>
       </div>
     </div>
@@ -75,7 +75,7 @@
         </p>
       </div>
 
-      <div class="left-aligned">
+      <div class="middle-aligned">
         <button v-on:click="finish()">Finish</button>
       </div>
     </div>
@@ -161,11 +161,15 @@ select {
   align-items: center;
   width: 65%;
 }
-.left-aligned {
+.left-aligned,
+.middle-aligned {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+}
+.middle-aligned{
+  justify-content: center;
 }
 .register-logo h1:last-child {
   color: rgb(29, 29, 131);
@@ -175,7 +179,7 @@ p {
   color: rgb(29, 29, 131);
 }
 h1 {
-  font-size: 3rem;
+  font-size: 1.5rem;
   color: orange;
   margin: 0;
 }
@@ -187,7 +191,7 @@ h1 {
   margin-bottom: 0.7rem;
 }
 h2 {
-  font-size: 1.7;
+  font-size: 1rem;
   color: rgb(29, 29, 131);
   margin: 0;
   font-weight: bold;
@@ -233,6 +237,19 @@ export default {
         ? (this.registrationWarning = false)
         : (this.registrationWarning = true);
         if(!this.brandWarning && !this.typeWarning && !this.registrationWarning){
+          this.brand="";
+          this.type="";
+          this.registration="";
+          fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users", {
+          method: "POST",
+          body: JSON.stringify({
+            email: this.email,
+            password: this.password
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        });
           alert('registered correctly')
         }
     },
