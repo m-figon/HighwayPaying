@@ -161,8 +161,11 @@ button:hover {
 <script>
 // @ is an alias to /src
 import store from "../store";
+import router from "../router"
+
 export default {
   store,
+  router,
   data() {
     return {
       email: "",
@@ -197,7 +200,7 @@ export default {
             console.log(this.$store.getters.getUser);
             this.resetForm();
             alert("loged successfully");
-            window.location.href = "/";
+            this.$router.push('/')
           }
         }
 

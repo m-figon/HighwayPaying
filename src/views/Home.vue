@@ -1,24 +1,64 @@
 <template>
   <div class="home">
-    <div class="logo">
-      <h1>Highway</h1>
-      <h1>Paying</h1>
-    </div>
-    <div class="logo2">
-      <h2>...comfortable driving!</h2>
-    </div>
-    <h3>I want to join HighwayPaying</h3>
-    <router-link to="/register"><button>SIGN UP</button></router-link>
+    <template v-if="!email">
+      <div class="logo">
+        <h1>Highway</h1>
+        <h1>Paying</h1>
+      </div>
+      <div class="logo2">
+        <h2>...comfortable driving!</h2>
+      </div>
+      <h3>I want to join HighwayPaying</h3>
+      <router-link to="/register"><button>SIGN UP</button></router-link>
 
-    <h3>I used HighwayPaying before</h3>
-    <router-link to="/login"><button>SIGN IN</button></router-link>
+      <h3>I used HighwayPaying before</h3>
+      <router-link to="/login"><button>SIGN IN</button></router-link>
+    </template>
+    <template v-if="email">
+      <div class="logo">
+        <h1>Highway</h1>
+        <h1>Paying</h1>
+      </div>
+      <div class="logo2">
+        <h2>...comfortable driving!</h2>
+      </div>
+      <h3>Your rides</h3>
+    </template>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
-export default {};
+import store from "../store";
+export default {
+  name: "App",
+  store,
+  data() {
+    return {
+      email: "",
+    };
+  },
+  computed: {
+    retrieveEmail() {
+      return this.$store.getters.getUser;
+    },
+  },
+  watch: {
+    retrieveEmail(newVal) {
+      this.updateEmail(newVal);
+    },
+  },
+  methods: {
+    signOut() {
+      this.$store.commit("changeEmail", "");
+    },
+    updateEmail(val) {
+      this.email = val;
+    },
+  },
+  beforeMount() {
+    this.updateEmail(this.retrieveEmail);
+  },
+};
 </script>
 <style scoped>
 .home {
