@@ -1,40 +1,24 @@
 <template>
   <div class="login">
-    <div class="login-logo">
-      <h1>Highway</h1>
-      <h1>Paying</h1>
+    <login-form
+      v-on:updateEmail="updateEmailParam($event)"
+      v-on:updatePassword="updatePasswordParam($event)"
+      v-bind:emailWarning="emailWarning"
+      v-bind:passwordWarning="passwordWarning"
+      firstWarning="Required field"
+      secondWarning="Required field"
+    >
+    </login-form>
+    <div class="left-aligned">
+      <p>Don't remember the password?</p>
+      <router-link to="/restore"><p id="login-link">Restore it</p></router-link>
     </div>
-    <div class="login-logo2">
-      <h2>...comfortable driving!</h2>
+    <div class="left-aligned">
+      <p>Don't have an account</p>
+      <router-link to="/register"><p id="login-link">Sign up</p></router-link>
     </div>
-    <div class="middled">
-      <div class="left-aligned">
-        <h3>SIGN IN</h3>
-      </div>
-      <div class="input-div">
-        <h4>e-mail</h4>
-        <input type="text" v-model="email" />
-        <p v-if="emailWarning">Field required</p>
-      </div>
-
-      <div class="input-div">
-        <h4>password</h4>
-        <input type="password" v-model="password" />
-        <p v-if="passwordWarning">Field required</p>
-      </div>
-      <div class="left-aligned">
-        <p>Don't remember the password?</p>
-        <router-link to="/restore"
-          ><p id="login-link">Restore it</p></router-link
-        >
-      </div>
-      <div class="left-aligned">
-        <p>Don't have an account</p>
-        <router-link to="/register"><p id="login-link">Sign up</p></router-link>
-      </div>
-      <div class="middle-aligned">
-        <button v-on:click="login()">Login</button>
-      </div>
+    <div class="middle-aligned">
+      <button v-on:click="login()">Login</button>
     </div>
   </div>
 </template>
@@ -123,7 +107,7 @@ select {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  width: 60%;
 }
 .middle-aligned {
   justify-content: center;
@@ -161,11 +145,15 @@ button:hover {
 <script>
 // @ is an alias to /src
 import store from "../store";
-import router from "../router"
+import router from "../router";
+import Form from "../components/Form.vue";
 
 export default {
   store,
   router,
+  components: {
+    "login-form": Form,
+  },
   data() {
     return {
       email: "",
@@ -174,6 +162,7 @@ export default {
       emailWarning: false,
       passwordWarning: false,
       users: [],
+      stage:1
     };
   },
   methods: {
@@ -200,7 +189,7 @@ export default {
             console.log(this.$store.getters.getUser);
             this.resetForm();
             alert("loged successfully");
-            this.$router.push('/')
+            this.$router.push("/");
           }
         }
 
@@ -208,6 +197,14 @@ export default {
           alert("wrong data");
         }
       }
+    },
+    updateEmailParam(param) {
+      this.email = param;
+      //console.log(this.email);
+    },
+    updatePasswordParam(param) {
+      this.password = param;
+      //console.log(this.password);
     },
   },
   created() {

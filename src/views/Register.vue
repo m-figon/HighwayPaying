@@ -1,30 +1,17 @@
 <template>
-  <div class="register">
-    <div class="register-logo">
-      <h1>Highway</h1>
-      <h1>Paying</h1>
-    </div>
-    <div class="register-logo2">
-      <h2>...comfortable driving!</h2>
-    </div>
-    <div class="middled" v-if="stage === 1">
-      <div class="left-aligned">
-        <h3>CREATE ACCOUNT</h3>
-      </div>
-      <div class="input-div">
-        <h4>e-mail</h4>
-        <input type="text" v-model="email" />
-        <p v-if="emailWarning">Please enter valid email</p>
-      </div>
-
-      <div class="input-div">
-        <h4>password</h4>
-        <input type="password" v-model="password" />
-        <p v-if="passwordWarning">
-          Password should have at least 8 signs, big letter, digit and special
-          sign
-        </p>
-      </div>
+  <div class="login">
+    <login-form
+      v-if="stage === 1"
+      v-on:updateEmail="updateEmailParam($event)"
+      v-on:updatePassword="updatePasswordParam($event)"
+      v-bind:emailWarning="emailWarning"
+      v-bind:passwordWarning="passwordWarning"
+      firstWarning="Please enter valid email"
+      secondWarning="Password should have at least 8 signs, big letter, digit and special
+          sign"
+    >
+    </login-form>
+    <div v-if="stage === 1">
       <div class="left-aligned">
         <input type="radio" v-bind:checked="terms" v-on:click="termsChanging" />
         <p>I accept terms of using</p>
@@ -40,7 +27,7 @@
         <button v-on:click="next()">Next</button>
       </div>
     </div>
-    <div class="middled" v-else-if="stage === 2">
+    <div class="middled" v-if="stage === 2">
       <div class="left-aligned">
         <h3>CREATE ACCOUNT</h3>
       </div>
@@ -63,9 +50,7 @@
           <option value="suv">SUV</option>
           <option value="truck">Truck</option>
         </select>
-        <p v-if="typeWarning">
-          Please select car type
-        </p>
+        <p v-if="typeWarning">Please select car type</p>
       </div>
       <div class="input-div">
         <h4>Car Registration</h4>
@@ -85,7 +70,7 @@
 
 
 <style scoped>
-.register h3 {
+.login h3 {
   color: rgb(29, 29, 131);
   font-size: 1rem;
   margin-bottom: -1rem;
@@ -106,7 +91,7 @@ a:-webkit-any-link {
 #warning {
   margin-top: 0rem;
 }
-.register button {
+.login button {
   border-radius: 10px;
   width: 6rem;
   height: 2rem;
@@ -120,7 +105,7 @@ a:-webkit-any-link {
   box-shadow: 1px 1px 8px 0px #aaaaaa;
   margin-top: 1rem;
 }
-.register {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,8 +120,8 @@ a:-webkit-any-link {
   width: 100%;
   margin: 0.5rem 0;
 }
-.register input[type="text"],
-.register input[type="password"],
+.login input[type="text"],
+.login input[type="password"],
 select {
   width: 20rem;
   height: 2rem;
@@ -146,7 +131,7 @@ select {
   background-color: rgba(255, 255, 255, 0);
   margin-top: -1.7rem;
 }
-.register h4 {
+.login h4 {
   padding: 0.3rem;
   margin-left: 0.5rem;
   background-color: rgb(247, 247, 247);
@@ -155,7 +140,7 @@ select {
   color: orange;
   font-size: 0.7rem;
 }
-.register-logo {
+.login-logo {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -168,10 +153,10 @@ select {
   align-items: center;
   width: 100%;
 }
-.middle-aligned{
+.middle-aligned {
   justify-content: center;
 }
-.register-logo h1:last-child {
+.login-logo h1:last-child {
   color: rgb(29, 29, 131);
 }
 p {
@@ -183,7 +168,7 @@ h1 {
   color: orange;
   margin: 0;
 }
-.register-logo2 {
+.login-logo2 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -203,8 +188,12 @@ button:hover {
 
 <script>
 // @ is an alias to /src
+import Form from "../components/Form.vue";
 
 export default {
+  components: {
+    "login-form": Form,
+  },
   data() {
     return {
       email: "",
@@ -230,28 +219,30 @@ export default {
       this.brand !== ""
         ? (this.brandWarning = false)
         : (this.brandWarning = true);
-      this.type !== ""
-        ? (this.typeWarning = false)
-        : (this.typeWarning = true);
-        !(this.registration.match(/^[a-zA-Z0-9]{8}$/) === null)
+      this.type !== "" ? (this.typeWarning = false) : (this.typeWarning = true);
+      !(this.registration.match(/^[a-zA-Z0-9]{8}$/) === null)
         ? (this.registrationWarning = false)
         : (this.registrationWarning = true);
-        if(!this.brandWarning && !this.typeWarning && !this.registrationWarning){
-          this.brand="";
-          this.type="";
-          this.registration="";
-          fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users", {
+      if (
+        !this.brandWarning &&
+        !this.typeWarning &&
+        !this.registrationWarning
+      ) {
+        this.brand = "";
+        this.type = "";
+        this.registration = "";
+        fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users", {
           method: "POST",
           body: JSON.stringify({
             email: this.email,
-            password: this.password
+            password: this.password,
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
         });
-          alert('registered correctly')
-        }
+        alert("logined correctly");
+      }
     },
     next() {
       !(this.email.match(/^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$/) === null)
@@ -269,6 +260,14 @@ export default {
       if (!this.emailWarning && !this.passwordWarning && !this.radioWarning) {
         this.stage = 2;
       }
+    },
+    updateEmailParam(param) {
+      this.email = param;
+      //console.log(this.email);
+    },
+    updatePasswordParam(param) {
+      this.password = param;
+      //console.log(this.password);
     },
   },
 };
