@@ -13,8 +13,7 @@
       </template>
       <template v-else-if="email">
         <router-link to="/">Rides</router-link> |
-        <router-link to="/cars">Cars</router-link> |
-        <router-link to="/payments">Payment</router-link>
+        <router-link to="/cars">Cars</router-link>
       </template>
     </div>
     <router-view />

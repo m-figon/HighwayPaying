@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="cars">
     <template v-if="!email">
       <div class="logo">
         <h1>Highway</h1>
@@ -23,26 +23,32 @@
         <h2>...comfortable driving!</h2>
       </div>
       <div class="left-align">
-        <h3>Your rides</h3>
-      </div>
-      <div class="left-align">
-        <h2>27.08.2021</h2>
+        <h3>Your cars</h3>
       </div>
       <div class="ride">
         <div class="left">
-          <img src="../assets/road.png" />
+          <img src="../assets/car.png" />
         </div>
         <div class="middle">
-          <h3>American Highway 2</h3>
-          <h3>Kansas</h3>
           <div class="one-line">
-            <h4>ABC12345</h4>
-            <h4>Honda</h4>
-            <h4>Civic</h4>
+            <h3>Honda</h3>
+            <h3>Civic</h3>
           </div>
+          <h4>ABC12345</h4>
+          <h3 id="active">Active</h3>
         </div>
         <div class="right">
-          <h2>5.30 USD</h2>
+          <div class="right-arrow"></div>
+        </div>
+      </div>
+      <div class="new-ride">
+        <div class="left">
+          <img src="../assets/car.png" />
+        </div>
+        <div class="middle">
+          <h3>+ Add car</h3>
+        </div>
+        <div class="right">
         </div>
       </div>
     </template>
@@ -83,7 +89,7 @@ export default {
 };
 </script>
 <style scoped>
-.home {
+.cars {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,6 +97,7 @@ export default {
   width: 100vw;
   height: 100vh;
 }
+
 .logo {
   display: flex;
   justify-content: center;
@@ -141,7 +148,8 @@ button {
 button:hover {
   cursor: pointer;
 }
-.ride {
+.ride,
+.new-ride {
   margin-top: 0.7rem;
   width: 30rem;
   -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
@@ -149,6 +157,17 @@ button:hover {
   background-color: white;
   height: 7rem;
   display: flex;
+}
+.new-ride{
+    height: 4rem;
+    margin-top: 2rem;
+}
+.new-ride h3{
+    text-transform: uppercase;
+    color: rgb(110, 110, 110);
+}
+.new-ride:hover{
+    cursor: pointer;
 }
 .left-align {
   width: 30rem;
@@ -200,10 +219,25 @@ button:hover {
   margin: 1rem;
   font-size: 1.3rem;
 }
-.one-line{
+.one-line {
   display: flex;
 }
-.one-line h4{
-  margin-right: 0.2rem
+.one-line h3 {
+  margin-right: 0.2rem;
+  text-transform: uppercase;
+}
+#active {
+  color: rgb(155, 216, 63);
+}
+.right-arrow {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: rotate(90deg);
+  background-color: rgb(29, 29, 131);
+  margin: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+.right-arrow:hover {
+  cursor: pointer;
 }
 </style>
