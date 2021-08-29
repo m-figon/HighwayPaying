@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+#app {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  background-color: #f7f7f7;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu {
+  display: flex;
+  margin: 0 1rem;
+}
+.menu h1 {
+  font-size: 1rem;
+  color: #1d1d83;
+  padding: 0 0.1rem;
+}
+
+#logout {
+  text-transform: uppercase;
+  color: orange;
+  font-weight: 500;
+}
+#logout:hover {
+  cursor: pointer;
+  color: #ffb733;
+}
+
+#nav {
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+}
+#nav a {
+  font-weight: 500;
+  color: #1d1d83;
+  font-size: 1rem;
+  padding: 0 0.1rem;
+  text-decoration: none;
+}
+#nav a:hover {
+  color: #141459;
+}
+#nav a.router-link-exact-active {
+  color: orange;
+}
+#nav a.router-link-exact-active:hover {
+  color: #ffb733;
+}

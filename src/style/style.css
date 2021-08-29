@@ -1,0 +1,511 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+#app {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  background-color: #f7f7f7;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu {
+  display: flex;
+  margin: 0 1rem;
+}
+.menu h1 {
+  font-size: 1rem;
+  color: #1d1d83;
+  padding: 0 0.1rem;
+}
+
+#logout {
+  text-transform: uppercase;
+  color: orange;
+  font-weight: 500;
+}
+#logout:hover {
+  cursor: pointer;
+  color: #ffb733;
+}
+
+#nav {
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+}
+#nav a {
+  font-weight: 500;
+  color: #1d1d83;
+  font-size: 1rem;
+  padding: 0 0.1rem;
+  text-decoration: none;
+}
+#nav a:hover {
+  color: #141459;
+}
+#nav a.router-link-exact-active {
+  color: orange;
+}
+#nav a.router-link-exact-active:hover {
+  color: #ffb733;
+}
+
+.cars {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  width: 100vw;
+  height: 100vh;
+}
+.cars h2 {
+  font-size: 1.7;
+  color: #1d1d83;
+  margin: 0;
+  font-weight: bold;
+}
+.cars h3 {
+  font-size: 1.2rem;
+  color: #1d1d83;
+  margin: 0;
+}
+.cars button {
+  border-radius: 10px;
+  width: 10rem;
+  height: 3rem;
+  font-size: 1.7rem;
+  color: white;
+  background: orange;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border: 0px;
+  -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+  box-shadow: 1px 1px 8px 0px #aaaaaa;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+.cars button:hover {
+  cursor: pointer;
+  background-color: #ffb733;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 30rem;
+}
+.logo h1:last-child {
+  color: #1d1d83;
+}
+
+h1 {
+  font-size: 3rem;
+  color: orange;
+  margin: 0;
+}
+
+.logo2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 21rem;
+  margin-bottom: 2rem;
+}
+
+.ride,
+.new-ride {
+  margin-top: 0.7rem;
+  width: 30rem;
+  -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+  box-shadow: 1px 1px 8px 0px #aaaaaa;
+  background-color: white;
+  height: 7rem;
+  display: flex;
+}
+
+.new-ride {
+  height: 4rem;
+  margin-top: 2rem;
+}
+.new-ride h3 {
+  text-transform: uppercase;
+  color: #6e6e6e;
+}
+.new-ride:hover {
+  cursor: pointer;
+}
+
+.left-align {
+  width: 30rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.left-align h3 {
+  margin-left: 10%;
+}
+.left-align h2 {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.left {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.left img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.middle {
+  width: 53%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+.middle h3 {
+  font-size: 1.1rem;
+  margin: 0.1rem 0;
+}
+.middle h4 {
+  font-size: 0.8rem;
+  color: #afafaf;
+  margin: 0.4rem 0;
+}
+
+.right {
+  width: 27%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.right h2 {
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.one-line {
+  display: flex;
+}
+.one-line h3 {
+  margin-right: 0.2rem;
+  text-transform: uppercase;
+}
+
+#active {
+  color: #9bd83f;
+}
+
+.right-arrow {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: rotate(90deg);
+  background-color: #1d1d83;
+  margin: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+.right-arrow:hover {
+  cursor: pointer;
+  background-color: #2626ad;
+}
+
+.home {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  width: 100vw;
+  height: 100vh;
+}
+.home h1 {
+  font-size: 3rem;
+  color: orange;
+  margin: 0;
+}
+.home button {
+  border-radius: 10px;
+  width: 10rem;
+  height: 3rem;
+  font-size: 1.7rem;
+  color: white;
+  background: orange;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border: 0px;
+  -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+  box-shadow: 1px 1px 8px 0px #aaaaaa;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+.home button:hover {
+  cursor: pointer;
+  background-color: #ffb733;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 30rem;
+}
+.logo h1:last-child {
+  color: #1d1d83;
+}
+.logo h2 {
+  font-size: 1.7;
+  color: #1d1d83;
+  margin: 0;
+  font-weight: bold;
+}
+.logo h3 {
+  font-size: 1.2rem;
+  color: #1d1d83;
+  margin: 0;
+}
+
+.logo2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 21rem;
+  margin-bottom: 2rem;
+}
+
+.ride {
+  margin-top: 0.7rem;
+  width: 30rem;
+  -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+  box-shadow: 1px 1px 8px 0px #aaaaaa;
+  background-color: white;
+  height: 7rem;
+  display: flex;
+}
+
+.left-align {
+  width: 30rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.left-align h3 {
+  margin-left: 10%;
+}
+.left-align h2 {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.left {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.left img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.middle {
+  width: 53%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+.middle h3 {
+  font-size: 1.1rem;
+  margin: 0.1rem 0;
+}
+.middle h4 {
+  font-size: 0.8rem;
+  color: #afafaf;
+  margin: 0.4rem 0;
+}
+
+.right {
+  width: 27%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.right h2 {
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.one-line {
+  display: flex;
+}
+.one-line h4 {
+  margin-right: 0.2rem;
+}
+
+#login-link {
+  color: orange;
+  margin-left: 0.3rem;
+}
+
+.input-div p,
+#warning {
+  color: red;
+  font-size: 0.6rem;
+}
+
+#warning {
+  margin-top: 0rem;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-direction: column;
+  width: 40vw;
+}
+.login p {
+  font-size: 0.7rem;
+  color: #1d1d83;
+}
+.login h1 {
+  font-size: 1.5rem;
+  color: orange;
+  margin: 0;
+}
+.login h3 {
+  color: #1d1d83;
+  font-size: 1rem;
+  margin-bottom: -1rem;
+  margin-left: 2rem;
+}
+.login h4 {
+  padding: 0.3rem;
+  margin-left: 0.5rem;
+  background-color: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  color: orange;
+  font-size: 0.7rem;
+}
+.login button {
+  border-radius: 10px;
+  width: 6rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: white;
+  background: orange;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border: 0px;
+  -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+  box-shadow: 1px 1px 8px 0px #aaaaaa;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+.login button:hover {
+  cursor: pointer;
+  background-color: #ffb733;
+}
+.login input[type=text],
+.login input[type=password],
+.login select {
+  width: 20rem;
+  height: 2rem;
+  padding-left: 1rem;
+  border: 1px solid orange;
+  color: #1d1d83;
+  background-color: rgba(255, 255, 255, 0);
+  margin-top: -1.7rem;
+}
+
+.input-div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 65%;
+}
+.login-logo h1:last-child {
+  color: #1d1d83;
+}
+
+.left-aligned,
+.middle-aligned {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  width: 40vw;
+}
+
+.middled {
+  flex-direction: column;
+  width: 40vw;
+  align-items: center;
+}
+
+.middle-aligned {
+  justify-content: center;
+}
+
+.login-logo2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 65%;
+  margin-bottom: 0.7rem;
+}
+
+h2 {
+  font-size: 1rem;
+  color: #1d1d83;
+  margin: 0;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=style.css.map */

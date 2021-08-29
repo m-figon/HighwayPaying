@@ -1,0 +1,64 @@
+@import "./global.scss";
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+}
+
+#app {
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    background-color: $background;
+    margin: 0;
+    height: 100vh;
+    @include flex-box(flex-start, center, column);
+}
+
+.menu {
+    display: flex;
+    margin: 0 1rem;
+    h1 {
+        font-size: 1rem;
+        color: $base-color;
+        padding: 0 0.1rem;
+    }
+}
+
+#logout {
+    text-transform: uppercase;
+    color: orange;
+    font-weight: 500;
+    &:hover {
+        cursor: pointer;
+        color: lighten($color: orange, $amount: 10%)
+    }
+}
+
+#nav {
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    a {
+        font-weight: 500;
+        color: $base-color;
+        font-size: 1rem;
+        padding: 0 0.1rem;
+        text-decoration: none;
+        &:hover {
+            color: darken($color: $base-color, $amount: 10%);
+        }
+        &.router-link-exact-active {
+            color: orange;
+            &:hover {
+                color: lighten($color: orange, $amount: 10%);
+            }
+        }
+    }
+}

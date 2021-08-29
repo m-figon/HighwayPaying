@@ -1,0 +1,102 @@
+@import "./global.scss";
+#login-link {
+    color: orange;
+    margin-left: 0.3rem;
+}
+
+.input-div p,
+#warning {
+    color: red;
+    font-size: 0.6rem;
+}
+
+#warning {
+    margin-top: 0rem;
+}
+
+.login {
+    @include flex-box();
+    flex-direction: column;
+    width: 40vw;
+    p {
+        font-size: 0.7rem;
+        color: $base-color;
+    }
+    h1 {
+        font-size: 1.5rem;
+        color: orange;
+        margin: 0;
+    }
+    h3 {
+        color: $base-color;
+        font-size: 1rem;
+        margin-bottom: -1rem;
+        margin-left: 2rem;
+    }
+    h4 {
+        padding: 0.3rem;
+        margin-left: 0.5rem;
+        background-color: $background;
+        position: relative;
+        z-index: 3;
+        color: orange;
+        font-size: 0.7rem;
+    }
+    @include addButton(6rem, 2rem, 1.2rem);
+    input[type="text"],
+    input[type="password"],
+    select {
+        width: 20rem;
+        height: 2rem;
+        padding-left: 1rem;
+        border: 1px solid orange;
+        color: $base-color;
+        background-color: rgba(255, 255, 255, 0);
+        margin-top: -1.7rem;
+    }
+}
+
+.input-div {
+    @include flex-box(center, flex-start, column);
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.login-logo {
+    @include flex-box(flex-end, center);
+    width: 65%;
+    h1 {
+        &:last-child {
+            color: $base-color;
+        }
+    }
+}
+
+.left-aligned,
+.middle-aligned {
+    @include flex-box(flex-start, center);
+    width: 40vw;
+}
+
+.middled {
+    flex-direction: column;
+    width: 40vw;
+    align-items: center;
+}
+
+.middle-aligned {
+    justify-content: center;
+}
+
+.login-logo2 {
+    @include flex-box(flex-end, center);
+    width: 65%;
+    margin-bottom: 0.7rem;
+}
+
+h2 {
+    font-size: 1rem;
+    color: $base-color;
+    margin: 0;
+    font-weight: bold;
+}

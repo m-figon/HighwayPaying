@@ -1,0 +1,34 @@
+$base-color: rgb(29, 29, 131);
+$background: rgb(247, 247, 247);
+@mixin flex-box($justify: center, $align: center, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin addShadow() {
+    -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+    box-shadow: 1px 1px 8px 0px #aaaaaa;
+}
+
+@mixin addButton($width, $height, $font) {
+    button {
+        border-radius: 10px;
+        width: $width;
+        height: $height;
+        font-size: $font;
+        color: white;
+        background: orange;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        border: 0px;
+        @include addShadow();
+        margin-top: 0.5rem;
+        margin-bottom: 3rem;
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($color: orange, $amount: 10%);
+        }
+    }
+}
