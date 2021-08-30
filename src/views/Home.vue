@@ -28,23 +28,25 @@
       <div class="left-align">
         <h2>27.08.2021</h2>
       </div>
-      <div class="ride">
+      <template v-if="user.rides">
+      <div class="ride" v-for="ride in user.rides" v-bind:key="ride.id">
         <div class="left">
           <img src="../assets/road.png" />
         </div>
-        <div class="middle">
-          <h3>American Highway 2</h3>
+        <div class="middle" v-bind:key="user.id">
+          <h3>{{ride.road}}</h3>
           <h3>Kansas</h3>
           <div class="one-line">
-            <h4>ABC12345</h4>
-            <h4>Honda</h4>
-            <h4>Civic</h4>
+            <h4>{{ride.car.registration}}</h4>
+            <h4>{{ride.car.brand}}</h4>
+            <h4>{{ride.car.type}}</h4>
           </div>
         </div>
         <div class="right">
-          <h2>5.30 USD</h2>
+          <h2>{{ride.price}}</h2>
         </div>
       </div>
+      </template>
     </template>
   </div>
 </template>
@@ -57,6 +59,7 @@ export default {
   data() {
     return {
       email: "",
+      user: null
     };
   },
   computed: {
@@ -79,6 +82,19 @@ export default {
   },
   beforeMount() {
     this.updateEmail(this.retrieveEmail);
+  },
+  created() {
+    fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users")
+      .then((response) => response.json())
+      .then((data) => (this.users = [...data]))
+      .then(() => console.log(this.users)).then(()=>{
+        for(let user of this.users){
+          if(this.email===user.email){
+            this.user = user;
+            console.log(this.user);
+          }
+        }
+      })
   },
 };
 </script>

@@ -1,5 +1,20 @@
 @import "./global.scss";
 .cars {
+    .middle {
+        width: 53%;
+        @include flex-box(center, flex-start, column);
+        padding: 0 1rem;
+        h3 {
+            font-size: 1.1rem;
+            margin: 0.1rem 0;
+            margin-right: 0.2rem;
+        }
+        h4 {
+            font-size: 0.8rem;
+            color: rgb(175, 175, 175);
+            margin: 0.4rem 0;
+        }
+    }
     @include flex-box(flex-start, center, column);
     background-color: $background;
     width: 100vw;
@@ -80,21 +95,6 @@ h1 {
     img {
         width: 3rem;
         height: 3rem;
-    }
-}
-
-.middle {
-    width: 53%;
-    @include flex-box(center, flex-start, column);
-    padding: 0 1rem;
-    h3 {
-        font-size: 1.1rem;
-        margin: 0.1rem 0;
-    }
-    h4 {
-        font-size: 0.8rem;
-        color: rgb(175, 175, 175);
-        margin: 0.4rem 0;
     }
 }
 

@@ -25,22 +25,24 @@
       <div class="left-align">
         <h3>Your cars</h3>
       </div>
-      <div class="ride">
+      <template v-if="user.cars">
+      <div class="ride"  v-for="car in user.cars" v-bind:key="car.id">
         <div class="left">
           <img src="../assets/car.png" />
         </div>
         <div class="middle">
           <div class="one-line">
-            <h3>Honda</h3>
-            <h3>Civic</h3>
+            <h3>{{car.brand}}</h3>
+            <h3>{{car.type}}</h3>
           </div>
-          <h4>ABC12345</h4>
+          <h4>{{car.registration}}</h4>
           <h3 id="active">Active</h3>
         </div>
         <div class="right">
           <div class="right-arrow"></div>
         </div>
       </div>
+      </template>
       <div class="new-ride">
         <div class="left">
           <img src="../assets/car.png" />
@@ -63,6 +65,7 @@ export default {
   data() {
     return {
       email: "",
+      user: null
     };
   },
   computed: {
@@ -85,6 +88,19 @@ export default {
   },
   beforeMount() {
     this.updateEmail(this.retrieveEmail);
+  },
+  created() {
+    fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users")
+      .then((response) => response.json())
+      .then((data) => (this.users = [...data]))
+      .then(() => console.log(this.users)).then(()=>{
+        for(let user of this.users){
+          if(this.email===user.email){
+            this.user = user;
+            console.log(this.user);
+          }
+        }
+      })
   },
 };
 </script>

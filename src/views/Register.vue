@@ -115,19 +115,26 @@ export default {
         !this.typeWarning &&
         !this.registrationWarning
       ) {
-        this.brand = "";
-        this.type = "";
-        this.registration = "";
-        fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users", {
+       
+        fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users", {
           method: "POST",
           body: JSON.stringify({
             email: this.email,
             password: this.password,
+            cars: [{
+              brand: this.brand,
+              type: this.type,
+              registration: this.registration
+            }],
+            rides: []
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
         });
+         this.brand = "";
+        this.type = "";
+        this.registration = "";
         alert("logined correctly");
       }
     },

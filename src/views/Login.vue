@@ -95,7 +95,7 @@ export default {
     },
   },
   created() {
-    fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users")
+    fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users")
       .then((response) => response.json())
       .then((data) => (this.users = [...data]))
       .then(() => console.log(this.users));

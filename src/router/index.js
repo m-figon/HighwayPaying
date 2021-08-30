@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Cars from '../views/Cars.vue'
+import Restore from '../views/Restore.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,10 @@ const routes = [{
     {
         path: '/cars',
         component: Cars
+    },
+    {
+        path: '/restore',
+        component: Restore
     },
 
 ]
