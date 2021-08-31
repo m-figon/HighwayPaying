@@ -1,5 +1,8 @@
 <template>
   <div class="login">
+    <div v-if="!loaded" class="loading-screen">
+        <img src="../assets/load.gif"/>
+    </div>
     <div class="middle-form">
       <div class="login-logo">
         <h1>Highway</h1>
@@ -52,6 +55,7 @@ export default {
       emailWarning: false,
       passwordWarning: false,
       users: [],
+      loaded: false,
       stage: 1,
     };
   },
@@ -113,7 +117,7 @@ export default {
     fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users")
       .then((response) => response.json())
       .then((data) => (this.users = [...data]))
-      .then(() => console.log(this.users));
+      .then(() => console.log(this.users)).then(()=>this.loaded=true);
   },
 };
 </script>

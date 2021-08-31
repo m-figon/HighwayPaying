@@ -13,7 +13,8 @@
   margin-top: 0rem;
 }
 
-.login {
+.login,
+.adding-display {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,22 +22,26 @@
   flex-direction: column;
   width: 40vw;
 }
-.login p {
+.login p,
+.adding-display p {
   font-size: 0.7rem;
   color: #1d1d83;
 }
-.login h1 {
+.login h1,
+.adding-display h1 {
   font-size: 1.5rem;
   color: orange;
   margin: 0;
 }
-.login h3 {
+.login h3,
+.adding-display h3 {
   color: #1d1d83;
   font-size: 1rem;
   margin-bottom: -1rem;
   margin-left: 2rem;
 }
-.login h4 {
+.login h4,
+.adding-display h4 {
   padding: 0.3rem;
   margin-left: 0.5rem;
   background-color: #f7f7f7;
@@ -45,7 +50,8 @@
   color: orange;
   font-size: 0.7rem;
 }
-.login button {
+.login button,
+.adding-display button {
   border-radius: 10px;
   width: 6rem;
   height: 2rem;
@@ -60,13 +66,17 @@
   margin-top: 0.5rem;
   margin-bottom: 3rem;
 }
-.login button:hover {
+.login button:hover,
+.adding-display button:hover {
   cursor: pointer;
   background-color: #ffb733;
 }
 .login input[type=text],
 .login input[type=password],
-.login select {
+.login select,
+.adding-display input[type=text],
+.adding-display input[type=password],
+.adding-display select {
   width: 20rem;
   height: 2rem;
   padding-left: 1rem;

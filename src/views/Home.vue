@@ -28,24 +28,27 @@
       <div class="left-align">
         <h2>27.08.2021</h2>
       </div>
-      <template v-if="user.rides">
-      <div class="ride" v-for="ride in user.rides" v-bind:key="ride.id">
-        <div class="left">
-          <img src="../assets/road.png" />
-        </div>
-        <div class="middle" v-bind:key="user.id">
-          <h3>{{ride.road}}</h3>
-          <h3>Kansas</h3>
-          <div class="one-line">
-            <h4>{{ride.car.registration}}</h4>
-            <h4>{{ride.car.brand}}</h4>
-            <h4>{{ride.car.type}}</h4>
+      <div v-if="!user" class="loading-screen">
+        <img src="../assets/load.gif" />
+      </div>
+      <template v-else-if="user.rides">
+        <div class="ride" v-for="ride in user.rides" v-bind:key="ride.id">
+          <div class="left">
+            <img src="../assets/road.png" />
+          </div>
+          <div class="middle" v-bind:key="user.id">
+            <h3>{{ ride.road }}</h3>
+            <h3>Kansas</h3>
+            <div class="one-line">
+              <h4>{{ ride.car.registration }}</h4>
+              <h4>{{ ride.car.brand }}</h4>
+              <h4>{{ ride.car.type }}</h4>
+            </div>
+          </div>
+          <div class="right">
+            <h2>{{ ride.price }}</h2>
           </div>
         </div>
-        <div class="right">
-          <h2>{{ride.price}}</h2>
-        </div>
-      </div>
       </template>
     </template>
   </div>
@@ -59,7 +62,7 @@ export default {
   data() {
     return {
       email: "",
-      user: null
+      user: null,
     };
   },
   computed: {
@@ -87,17 +90,18 @@ export default {
     fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users")
       .then((response) => response.json())
       .then((data) => (this.users = [...data]))
-      .then(() => console.log(this.users)).then(()=>{
-        for(let user of this.users){
-          if(this.email===user.email){
+      .then(() => console.log(this.users))
+      .then(() => {
+        for (let user of this.users) {
+          if (this.email === user.email) {
             this.user = user;
             console.log(this.user);
+            this.loaded = true;
           }
         }
-      })
+      });
   },
 };
 </script>
 <style src="../style/style.css">
-
 </style>

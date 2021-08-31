@@ -1,5 +1,38 @@
 @import "./global.scss";
 .cars {
+    .adding-display {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .adding-panel {
+        width: 30rem;
+        height: auto;
+        padding: 2rem 0;
+        background-color: $background;
+        border: 1px solid orange;
+        @include flex-box();
+        border-radius: 20px;
+        p {
+            color: red;
+            font-size: 0.7rem;
+        }
+    }
+    .right-aligned {
+        display: flex;
+        justify-content: flex-end;
+        @include addButton(2rem, 2rem, 0.7rem);
+        button {
+            margin: 0;
+        }
+    }
     .middle {
         width: 53%;
         @include flex-box(center, flex-start, column);

@@ -7,6 +7,60 @@
   width: 100vw;
   height: 100vh;
 }
+.cars .adding-display {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.cars .adding-panel {
+  width: 30rem;
+  height: auto;
+  padding: 2rem 0;
+  background-color: #f7f7f7;
+  border: 1px solid orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 20px;
+}
+.cars .adding-panel p {
+  color: red;
+  font-size: 0.7rem;
+}
+.cars .right-aligned {
+  display: flex;
+  justify-content: flex-end;
+}
+.cars .right-aligned button {
+  border-radius: 10px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.7rem;
+  color: white;
+  background: orange;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border: 0px;
+  -webkit-box-shadow: 1px 1px 8px 0px #aaaaaa;
+  box-shadow: 1px 1px 8px 0px #aaaaaa;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+.cars .right-aligned button:hover {
+  cursor: pointer;
+  background-color: #ffb733;
+}
+.cars .right-aligned button {
+  margin: 0;
+}
 .cars .middle {
   width: 53%;
   display: flex;

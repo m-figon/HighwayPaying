@@ -2,7 +2,6 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 
 a:-webkit-any-link {
@@ -63,4 +62,22 @@ a:-webkit-any-link {
 }
 #nav a.router-link-exact-active:hover {
   color: #ffb733;
+}
+
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100vw;
+  background-color: #f7f7f7;
+  height: 100vh;
+  z-index: 10;
+}
+.loading-screen img {
+  width: 3rem;
+  height: 3rem;
 }

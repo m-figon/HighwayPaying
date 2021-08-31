@@ -1,5 +1,9 @@
 <template>
+  
   <div class="login">
+    <div v-if="!loaded" class="loading-screen">
+        <img src="../assets/load.gif"/>
+    </div>
     <login-form
       v-on:updateEmail="updateEmailParam($event)"
       v-on:updatePassword="updatePasswordParam($event)"
@@ -49,6 +53,7 @@ export default {
       emailWarning: false,
       passwordWarning: false,
       users: [],
+      loaded: false,
       stage:1
     };
   },
@@ -76,7 +81,7 @@ export default {
             console.log(this.$store.getters.getUser);
             this.resetForm();
             alert("loged successfully");
-            this.$router.push("/");
+            this.$router.push("/cars");
           }
         }
 
@@ -98,7 +103,9 @@ export default {
     fetch("https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users")
       .then((response) => response.json())
       .then((data) => (this.users = [...data]))
-      .then(() => console.log(this.users));
+      .then(() => console.log(this.users)).then(()=>{
+        this.loaded=true;
+      });
   },
 };
 </script>

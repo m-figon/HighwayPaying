@@ -14,7 +14,8 @@
     margin-top: 0rem;
 }
 
-.login {
+.login,
+.adding-display {
     @include flex-box();
     flex-direction: column;
     width: 40vw;
