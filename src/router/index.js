@@ -5,6 +5,7 @@ import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Cars from '../views/Cars.vue'
 import Restore from '../views/Restore.vue'
+import Car from '../views/Car.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,10 @@ const routes = [{
     {
         path: '/restore',
         component: Restore
+    },
+    {
+        path: '/:value',
+        component: Car
     },
 
 ]

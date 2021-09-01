@@ -19,6 +19,8 @@ var _Cars = _interopRequireDefault(require("../views/Cars.vue"));
 
 var _Restore = _interopRequireDefault(require("../views/Restore.vue"));
 
+var _Car = _interopRequireDefault(require("../views/Car.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _vue["default"].use(_vueRouter["default"]);
@@ -38,6 +40,9 @@ var routes = [{
 }, {
   path: '/restore',
   component: _Restore["default"]
+}, {
+  path: '/:value',
+  component: _Car["default"]
 }];
 var router = new _vueRouter["default"]({
   mode: 'history',

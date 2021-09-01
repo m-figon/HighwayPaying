@@ -86,7 +86,9 @@
             <h3 id="active">Active</h3>
           </div>
           <div class="right">
-            <div class="right-arrow"></div>
+            <router-link v-bind:to="'/'+car.registration+'-'+car.brand+'-'+car.type">
+              <div class="right-arrow"></div>
+            </router-link>
           </div>
         </div>
       </template>
@@ -132,14 +134,14 @@ export default {
     },
   },
   methods: {
-    resetPopUp(){
-      this.adding=false;
-      this.brand="";
-      this.registration="";
-      this.type="";
-      this.registrationWarning=false;
-      this.typeWarning=false;
-      this.brandWarning=false;
+    resetPopUp() {
+      this.adding = false;
+      this.brand = "";
+      this.registration = "";
+      this.type = "";
+      this.registrationWarning = false;
+      this.typeWarning = false;
+      this.brandWarning = false;
     },
     add() {
       this.brand !== ""
@@ -176,7 +178,7 @@ export default {
             },
           }
         ).then(() => {
-          this.user=null;
+          this.user = null;
           fetch(
             "https://rocky-citadel-32862.herokuapp.com/Highway-Paying/users"
           )
