@@ -101,7 +101,7 @@ option {
   top: 0;
   left: 0;
   width: 100vw;
-  height: auto;
+  height: 100vh;
   z-index: 20;
   display: flex;
   align-items: center;
@@ -520,6 +520,19 @@ h1 {
 
 #warning {
   margin-top: 0rem;
+}
+
+.input-div .line {
+  display: flex;
+}
+.input-div .line button,
+.input-div .line img {
+  border-radius: 0;
+  margin: 0;
+  width: 2rem;
+  margin-top: -1.7rem;
+  margin-left: -2rem;
+  height: 2.2rem;
 }
 
 .login,

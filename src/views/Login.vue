@@ -81,7 +81,7 @@ export default {
             console.log(this.$store.getters.getUser);
             this.resetForm();
             alert("loged successfully");
-            this.$router.push("/cars");
+            this.$router.push("/");
           }
         }
 
